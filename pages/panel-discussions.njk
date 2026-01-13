@@ -1,8 +1,8 @@
 ---
 layout: layouts/list.njk
-title: Videos
+title: Panel Discussions
 description: Panel discussions, interviews, and community events
-permalink: /videos/
+permalink: /panel-discussions/
 ---
 {% set upcomingVideos = collections.videos | filterUpcoming(true) %}
 {% set pastVideos = collections.videos | filterUpcoming(false) %}
@@ -12,11 +12,14 @@ permalink: /videos/
   <h2>Upcoming</h2>
   <div class="grid grid-2">
   {% for video in upcomingVideos %}
-    <div class="card">
-      <h3 class="card-title"><a href="{{ video.url }}">{{ video.data.title }}</a></h3>
-      <p class="card-meta">{{ video.data.date | dateFormat }}</p>
+    <a href="{{ video.url }}" class="card card-link">
+      {% if video.data.poster %}
+      <img src="{{ video.data.poster }}" alt="{{ video.data.title }}" class="card-poster">
+      {% endif %}
+      <h3 class="card-title">{{ video.data.title }}</h3>
+      <p class="card-meta">{{ video.data.date | dateFormat }}{% if video.data.panelist %} &middot; {{ video.data.panelist }}{% endif %}</p>
       <p class="card-description">{{ video.data.description }}</p>
-    </div>
+    </a>
   {% endfor %}
   </div>
 </section>
@@ -24,7 +27,7 @@ permalink: /videos/
 
 {% if pastVideos.length > 0 %}
 <section class="section">
-  <h2>Past Videos</h2>
+  <h2>Past Panel Discussions</h2>
   <div class="grid grid-2">
   {% for video in pastVideos %}
     <div class="card">

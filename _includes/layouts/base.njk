@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }} | {{ site.title }}</title>
   <meta name="description" content="{{ description or site.description }}">
+  <link rel="icon" type="image/png" href="/assets/images/march19platform_logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,5 +19,59 @@
   </main>
 
   {% include "partials/footer.njk" %}
+
+  <script type="module">
+    const pdfContainer = document.getElementById('pdf-container');
+    if (pdfContainer) {
+      const pdfUrl = pdfContainer.dataset.pdfUrl;
+      const pdfjsLib = await import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.mjs');
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.worker.min.mjs';
+
+      const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+      const canvas = pdfContainer.querySelector('.pdf-canvas');
+      const context = canvas.getContext('2d');
+      const pageNumSpan = document.getElementById('pdf-page-num');
+      const pageCountSpan = document.getElementById('pdf-page-count');
+      const prevBtn = document.getElementById('pdf-prev');
+      const nextBtn = document.getElementById('pdf-next');
+
+      let currentPage = 1;
+      const totalPages = pdf.numPages;
+      pageCountSpan.textContent = totalPages;
+
+      async function renderPage(pageNum) {
+        const page = await pdf.getPage(pageNum);
+        const containerWidth = pdfContainer.querySelector('.pdf-canvas-container').offsetWidth;
+        const unscaledViewport = page.getViewport({ scale: 1 });
+        const scale = containerWidth / unscaledViewport.width;
+        const viewport = page.getViewport({ scale: scale });
+
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        await page.render({ canvasContext: context, viewport: viewport }).promise;
+        pageNumSpan.textContent = pageNum;
+
+        prevBtn.disabled = pageNum <= 1;
+        nextBtn.disabled = pageNum >= totalPages;
+      }
+
+      prevBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          renderPage(currentPage);
+        }
+      });
+
+      nextBtn.addEventListener('click', () => {
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderPage(currentPage);
+        }
+      });
+
+      renderPage(1);
+    }
+  </script>
 </body>
 </html>

@@ -1,0 +1,30 @@
+---
+layout: layouts/base.njk
+---
+<div class="container content">
+  <header class="page-header">
+    <h1 class="page-title">{{ title }}</h1>
+    <p class="card-meta">{{ date | dateFormat }}{% if panelist %} &middot; {{ panelist }}{% endif %}</p>
+  </header>
+
+  {% if poster and upcoming %}
+  <img src="{{ poster }}" alt="{{ title }}" class="video-poster">
+  {% endif %}
+
+  {% if youtubeId and not upcoming %}
+  <div class="video-embed" style="margin-bottom: var(--spacing-lg);">
+    <iframe
+      src="https://www.youtube.com/embed/{{ youtubeId }}"
+      title="{{ title }}"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+  {% endif %}
+
+  {{ content | safe }}
+
+  <p style="margin-top: var(--spacing-lg);">
+    <a href="/panel-discussions/">&larr; Back to all panel discussions</a>
+  </p>
+</div>

@@ -1,5 +1,5 @@
 {
-  "layout": "layouts/page.njk",
+  "layout": "layouts/video.njk",
   "tags": "video",
-  "permalink": "/videos/{{ page.fileSlug }}/"
+  "permalink": "/panel-discussions/{{ page.fileSlug }}/"
 }

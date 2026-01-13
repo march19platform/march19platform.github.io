@@ -86,6 +86,9 @@ h3 { font-size: var(--font-size-lg); }
   background-color: var(--color-brand);
   color: var(--color-text-on-brand);
   padding: var(--spacing-md) 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .site-header a {
@@ -105,9 +108,41 @@ h3 { font-size: var(--font-size-lg); }
   gap: var(--spacing-sm);
 }
 
+.site-branding {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  text-decoration: none;
+  color: var(--color-text-on-brand);
+}
+
+.site-branding:hover {
+  text-decoration: none;
+  opacity: 0.95;
+}
+
+.site-logo {
+  height: 50px;
+  width: auto;
+}
+
+.site-branding-text {
+  display: flex;
+  flex-direction: column;
+}
+
 .site-title {
   font-size: var(--font-size-xl);
   font-weight: 700;
+}
+
+.site-slogan {
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  opacity: 0.9;
+  margin-top: 0.125rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .site-nav ul {
@@ -213,6 +248,72 @@ main {
   background-color: var(--color-background-alt);
 }
 
+.card-poster {
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.video-poster {
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* PDF Viewer */
+.pdf-viewer {
+  margin-bottom: var(--spacing-md);
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: var(--color-background-alt);
+}
+
+.pdf-canvas-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.pdf-canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pdf-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background-color: var(--color-background);
+  border-top: 1px solid var(--color-border);
+}
+
+.pdf-nav-btn {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--color-brand);
+  color: var(--color-text-on-brand);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+}
+
+.pdf-nav-btn:hover:not(:disabled) {
+  background-color: var(--color-brand-dark);
+}
+
+.pdf-nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pdf-page-info {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
 /* Grid */
 .grid {
   display: grid;
@@ -294,6 +395,14 @@ main {
   .header-inner {
     flex-direction: column;
     text-align: center;
+  }
+
+  .site-branding {
+    justify-content: center;
+  }
+
+  .site-branding-text {
+    text-align: left;
   }
 
   .site-nav ul {
