@@ -220,6 +220,11 @@ h3 { font-size: var(--font-size-lg); }
   letter-spacing: 0.05em;
 }
 
+.site-nav a.active {
+  border-bottom: 2px solid var(--color-text-on-brand);
+  padding-bottom: 2px;
+}
+
 /* Footer */
 .site-footer {
   background-color: var(--color-background-alt);

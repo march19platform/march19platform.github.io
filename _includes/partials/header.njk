@@ -9,13 +9,13 @@
     </a>
     <nav class="site-nav">
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/panel-discussions/">Panel Discussions</a></li>
-        <li><a href="/fanzins/">Fanzin</a></li>
-        <li><a href="/projects/">Projects</a></li>
-        <li><a href="/organizations/">We Support</a></li>
-        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/"{% if page.url == "/" %} class="active"{% endif %}>Home</a></li>
+        <li><a href="/about/"{% if page.url == "/about/" %} class="active"{% endif %}>About</a></li>
+        <li><a href="/panel-discussions/"{% if page.url.startsWith("/panel-discussions/") %} class="active"{% endif %}>Panel Discussions</a></li>
+        <li><a href="/fanzins/"{% if page.url.startsWith("/fanzins/") %} class="active"{% endif %}>Fanzin</a></li>
+        <li><a href="/projects/"{% if page.url.startsWith("/projects/") %} class="active"{% endif %}>Projects</a></li>
+        <li><a href="/organizations/"{% if page.url.startsWith("/organizations/") %} class="active"{% endif %}>We Support</a></li>
+        <li><a href="/contact/"{% if page.url == "/contact/" %} class="active"{% endif %}>Contact</a></li>
       </ul>
     </nav>
   </div>
