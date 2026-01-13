@@ -1,0 +1,23 @@
+---
+layout: layouts/list.njk
+title: Fanzin Archive
+description: Browse all issues of our weekly publication
+permalink: /fanzins/
+---
+<p style="margin-bottom: var(--spacing-lg);">
+  Our "mini weekly newspaper" distributed in English. Leave copies in restaurants, cafes, schools,
+  or any place where you think people might read it.
+</p>
+
+<ul class="archive-list">
+{% for fanzin in collections.fanzins %}
+  <li class="archive-item">
+    <h3><a href="{{ fanzin.url }}">{{ fanzin.data.title }}</a></h3>
+    <p class="card-meta">{{ fanzin.data.date | dateFormat }}</p>
+    <p class="card-description">{{ fanzin.data.description }}</p>
+    {% if fanzin.data.pdfUrl %}
+    <a href="{{ fanzin.data.pdfUrl }}" class="btn" style="margin-top: var(--spacing-xs);">Download PDF</a>
+    {% endif %}
+  </li>
+{% endfor %}
+</ul>

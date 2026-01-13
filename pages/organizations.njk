@@ -1,0 +1,25 @@
+---
+layout: layouts/list.njk
+title: Organizations We Support
+description: Partners and organizations aligned with our mission
+permalink: /organizations/
+---
+<p style="margin-bottom: var(--spacing-lg);">
+  We stand in solidarity with these organizations working toward justice, democracy, and human rights.
+</p>
+
+<div class="grid grid-2">
+{% for org in collections.organizations %}
+  <div class="card">
+    <h3 class="card-title">
+      {% if org.data.url %}
+      <a href="{{ org.data.url }}" target="_blank" rel="noopener">{{ org.data.title }}</a>
+      {% else %}
+      {{ org.data.title }}
+      {% endif %}
+    </h3>
+    <p class="card-description">{{ org.data.description }}</p>
+    <a href="{{ org.url }}" style="margin-top: var(--spacing-sm); display: inline-block;">Read more &rarr;</a>
+  </div>
+{% endfor %}
+</div>

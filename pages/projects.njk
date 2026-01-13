@@ -1,0 +1,16 @@
+---
+layout: layouts/list.njk
+title: Our Projects
+description: Campaigns, exhibitions, and initiatives
+permalink: /projects/
+---
+<div class="grid grid-2">
+{% for project in collections.projects %}
+  <div class="card">
+    <h3 class="card-title"><a href="{{ project.url }}">{{ project.data.title }}</a></h3>
+    <p class="card-meta">{{ project.data.date | dateFormat }}</p>
+    <p class="card-description">{{ project.data.description }}</p>
+    <a href="{{ project.url }}" style="margin-top: var(--spacing-sm); display: inline-block;">Learn more &rarr;</a>
+  </div>
+{% endfor %}
+</div>

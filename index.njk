@@ -1,0 +1,106 @@
+---
+layout: layouts/base.njk
+title: Home
+---
+<div class="container">
+  {# Row 1: Latest Fanzin (left) + Upcoming Video (right) #}
+  <div class="grid grid-2">
+    {# Latest Fanzin #}
+    {% if collections.fanzins.length > 0 %}
+    {% set latestFanzin = collections.fanzins[0] %}
+    <section class="section">
+      <h2 class="section-title">Latest Fanzin</h2>
+      <div class="card">
+        <h3 class="card-title">{{ latestFanzin.data.title }}</h3>
+        <p class="card-meta">{{ latestFanzin.data.date | dateFormat }}</p>
+        <p class="card-description">{{ latestFanzin.data.description }}</p>
+        <div style="margin-top: var(--spacing-sm);">
+          {% if latestFanzin.data.pdfUrl %}
+          <a href="{{ latestFanzin.data.pdfUrl }}" class="btn">Download PDF</a>
+          {% endif %}
+          <a href="{{ latestFanzin.url }}" style="margin-left: var(--spacing-sm);">Read more</a>
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    {# Upcoming Video #}
+    {% set upcomingVideos = collections.videos | filterUpcoming(true) %}
+    {% if upcomingVideos.length > 0 %}
+    {% set nextVideo = upcomingVideos[0] %}
+    <section class="section">
+      <h2 class="section-title">Upcoming</h2>
+      <div class="card">
+        <h3 class="card-title">{{ nextVideo.data.title }}</h3>
+        <p class="card-meta">{{ nextVideo.data.date | dateFormat }}</p>
+        <p class="card-description">{{ nextVideo.data.description }}</p>
+        <a href="{{ nextVideo.url }}" class="btn" style="margin-top: var(--spacing-sm);">Learn More</a>
+      </div>
+    </section>
+    {% endif %}
+  </div>
+
+  {# Row 2: Most Recent Video (full span) #}
+  {% set recentVideos = collections.videos | filterUpcoming(false) %}
+  {% if recentVideos.length > 0 %}
+  {% set latestVideo = recentVideos[0] %}
+  <section class="section">
+    <h2 class="section-title">Latest Video</h2>
+    <div class="video-embed">
+      <iframe
+        src="https://www.youtube.com/embed/{{ latestVideo.data.youtubeId }}"
+        title="{{ latestVideo.data.title }}"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div style="margin-top: var(--spacing-sm);">
+      <h3 class="card-title">{{ latestVideo.data.title }}</h3>
+      <p class="card-meta">{{ latestVideo.data.date | dateFormat }}</p>
+      <p class="card-description">{{ latestVideo.data.description }}</p>
+    </div>
+  </section>
+  {% endif %}
+
+  {# Row 3: Supported Campaigns (3 thumbnails) #}
+  {% if collections.organizations.length > 0 %}
+  <section class="section">
+    <h2 class="section-title">We Support</h2>
+    <div class="grid grid-3">
+      {% for org in collections.organizations | limit(3) %}
+      <a href="{{ org.url }}" class="card card-link">
+        {% if org.data.thumbnail %}
+        <img src="{{ org.data.thumbnail }}" alt="{{ org.data.title }}" class="card-thumbnail">
+        {% endif %}
+        <h3 class="card-title">{{ org.data.title }}</h3>
+        <p class="card-description">{{ org.data.description }}</p>
+      </a>
+      {% endfor %}
+    </div>
+    <p style="margin-top: var(--spacing-md); text-align: center;">
+      <a href="/organizations/">View all organizations &rarr;</a>
+    </p>
+  </section>
+  {% endif %}
+
+  {# Row 4: Our Projects (3 thumbnails) #}
+  {% if collections.projects.length > 0 %}
+  <section class="section">
+    <h2 class="section-title">Our Projects</h2>
+    <div class="grid grid-3">
+      {% for project in collections.projects | limit(3) %}
+      <a href="{{ project.url }}" class="card card-link">
+        {% if project.data.thumbnail %}
+        <img src="{{ project.data.thumbnail }}" alt="{{ project.data.title }}" class="card-thumbnail">
+        {% endif %}
+        <h3 class="card-title">{{ project.data.title }}</h3>
+        <p class="card-description">{{ project.data.description }}</p>
+      </a>
+      {% endfor %}
+    </div>
+    <p style="margin-top: var(--spacing-md); text-align: center;">
+      <a href="/projects/">View all projects &rarr;</a>
+    </p>
+  </section>
+  {% endif %}
+</div>
