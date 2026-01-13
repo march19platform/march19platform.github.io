@@ -57,7 +57,26 @@ title: Home
   </section>
   {% endif %}
 
-  {# Row 3: Supported Campaigns (3 thumbnails) #}
+  {# Row 3: Our Projects (3 thumbnails) #}
+  <section class="section">
+    <h2 class="section-title">Our Projects</h2>
+    <div class="grid grid-3">
+      {% for project in collections.projects | limit(2) %}
+      <a href="{{ project.url }}" class="card card-link">
+        <img src="{{ project.data.thumbnail }}" alt="{{ project.data.title }}" class="card-thumbnail">
+        <h3 class="card-title">{{ project.data.title }}</h3>
+        <p class="card-description">{{ project.data.description }}</p>
+      </a>
+      {% endfor %}
+      <a href="/fanzins/" class="card card-link">
+        <img src="/assets/projects/project3.jpg" alt="Weekly Mini Newspaper" class="card-thumbnail">
+        <h3 class="card-title">Weekly Mini Newspaper aka "Fanzin"</h3>
+        <p class="card-description">We write a mini weekly newspaper in English to make sure you're up to date. Trust us, we know it's not easy</p>
+      </a>
+    </div>
+  </section>
+
+  {# Row 4: Supported Campaigns (3 thumbnails) #}
   {% if collections.campaigns.length > 0 %}
   <section class="section">
     <h2 class="section-title">Campaigns We Support</h2>
@@ -68,27 +87,6 @@ title: Home
       </a>
       {% endfor %}
     </div>
-  </section>
-  {% endif %}
-
-  {# Row 4: Our Projects (3 thumbnails) #}
-  {% if collections.projects.length > 0 %}
-  <section class="section">
-    <h2 class="section-title">Our Projects</h2>
-    <div class="grid grid-3">
-      {% for project in collections.projects | limit(3) %}
-      <a href="{{ project.url }}" class="card card-link">
-        {% if project.data.thumbnail %}
-        <img src="{{ project.data.thumbnail }}" alt="{{ project.data.title }}" class="card-thumbnail">
-        {% endif %}
-        <h3 class="card-title">{{ project.data.title }}</h3>
-        <p class="card-description">{{ project.data.description }}</p>
-      </a>
-      {% endfor %}
-    </div>
-    <p style="margin-top: var(--spacing-md); text-align: center;">
-      <a href="/projects/">View all projects &rarr;</a>
-    </p>
   </section>
   {% endif %}
 </div>

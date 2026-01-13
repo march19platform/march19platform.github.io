@@ -18,7 +18,7 @@ export default function(eleventyConfig) {
 
   eleventyConfig.addCollection("projects", function(collectionApi) {
     return collectionApi.getFilteredByGlob("content/projects/*.md").sort((a, b) => {
-      return b.date - a.date;
+      return (a.data.order || 0) - (b.data.order || 0); // by order field
     });
   });
 
