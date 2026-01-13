@@ -58,23 +58,16 @@ title: Home
   {% endif %}
 
   {# Row 3: Supported Campaigns (3 thumbnails) #}
-  {% if collections.organizations.length > 0 %}
+  {% if collections.campaigns.length > 0 %}
   <section class="section">
-    <h2 class="section-title">We Support</h2>
+    <h2 class="section-title">Campaigns We Support</h2>
     <div class="grid grid-3">
-      {% for org in collections.organizations | limit(3) %}
-      <a href="{{ org.url }}" class="card card-link">
-        {% if org.data.thumbnail %}
-        <img src="{{ org.data.thumbnail }}" alt="{{ org.data.title }}" class="card-thumbnail">
-        {% endif %}
-        <h3 class="card-title">{{ org.data.title }}</h3>
-        <p class="card-description">{{ org.data.description }}</p>
+      {% for campaign in collections.campaigns | limit(3) %}
+      <a href="{{ campaign.url }}">
+        <img src="{{ campaign.data.thumbnail }}" alt="{{ campaign.data.title }}" class="campaign-image">
       </a>
       {% endfor %}
     </div>
-    <p style="margin-top: var(--spacing-md); text-align: center;">
-      <a href="/organizations/">View all organizations &rarr;</a>
-    </p>
   </section>
   {% endif %}
 

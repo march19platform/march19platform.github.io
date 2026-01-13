@@ -28,6 +28,12 @@ export default function(eleventyConfig) {
     });
   });
 
+  eleventyConfig.addCollection("campaigns", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("content/campaigns/*.md").sort((a, b) => {
+      return (a.data.order || 0) - (b.data.order || 0); // by order field
+    });
+  });
+
   // Filters
   eleventyConfig.addFilter("dateFormat", function(date) {
     return new Date(date).toLocaleDateString('en-US', {

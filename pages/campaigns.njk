@@ -1,0 +1,13 @@
+---
+layout: layouts/list.njk
+title: Campaigns
+description: Campaigns we support for democracy and human rights
+permalink: /campaigns/
+---
+<div class="grid grid-3">
+{% for campaign in collections.campaigns %}
+  <a href="{{ campaign.url }}">
+    <img src="{{ campaign.data.thumbnail }}" alt="{{ campaign.data.title }}" class="campaign-image">
+  </a>
+{% endfor %}
+</div>

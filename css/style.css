@@ -132,6 +132,18 @@ h3 { font-size: var(--font-size-lg); }
   border-radius: 4px;
 }
 
+/* Campaign Images */
+.campaign-image {
+  width: 100%;
+  border-radius: 4px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.campaign-image:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 @media (max-width: 768px) {
   .image-gallery {
     grid-template-columns: 1fr;
