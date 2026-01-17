@@ -2,6 +2,7 @@ export default function(eleventyConfig) {
   // Passthrough copy for static assets
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("assets");
+  eleventyConfig.addPassthroughCopy(".nojekyll");
 
   // Collections
   eleventyConfig.addCollection("fanzins", function(collectionApi) {
