@@ -563,6 +563,34 @@ main {
   display: block;
 }
 
+/* Fanzin List */
+.fanzin-list {
+  list-style: none;
+}
+
+.fanzin-list li {
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.fanzin-list li:last-child {
+  border-bottom: none;
+}
+
+.fanzin-list a {
+  font-weight: 500;
+}
+
+.fanzin-date {
+  color: var(--color-text-light);
+  font-size: var(--font-size-sm);
+  flex-shrink: 0;
+}
+
 /* Grid */
 .grid {
   display: grid;
