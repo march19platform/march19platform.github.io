@@ -132,6 +132,43 @@ h3 { font-size: var(--font-size-lg); }
   border-radius: 4px;
 }
 
+/* Connect Grid */
+.connect-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-sm);
+}
+
+.connect-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background-color: var(--color-background-alt);
+  border-radius: 4px;
+  color: var(--color-text);
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.connect-link:hover {
+  background-color: var(--color-brand);
+  color: var(--color-text-on-brand);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.connect-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .connect-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Campaign Images */
 .campaign-image {
   width: 100%;

@@ -18,7 +18,6 @@ Connect with us on social media:
 - [YouTube](https://www.youtube.com/@march19platform)
 - [Instagram](https://www.instagram.com/march19platform)
 - [X (Twitter)](https://twitter.com/march19platform)
-- [Bluesky](https://bsky.app/profile/march19platform)
 
 ## Newsletter
 
