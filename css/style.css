@@ -520,6 +520,10 @@ main {
   border-top: 1px solid var(--color-border);
 }
 
+.upcoming-panel-controls .btn {
+  font-size: var(--font-size-sm);
+}
+
 /* Grid */
 .grid {
   display: grid;
