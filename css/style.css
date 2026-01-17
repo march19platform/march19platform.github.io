@@ -499,6 +499,23 @@ main {
   color: var(--color-text-light);
 }
 
+/* Upcoming Panel */
+.upcoming-panel {
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--color-background-alt);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.upcoming-panel-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-sm);
+  background-color: var(--color-background);
+  border-top: 1px solid var(--color-border);
+}
+
 /* Grid */
 .grid {
   display: grid;
