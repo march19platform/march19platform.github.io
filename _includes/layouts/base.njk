@@ -46,56 +46,58 @@
   </script>
 
   <script type="module">
-    const pdfContainer = document.getElementById('pdf-container');
-    if (pdfContainer) {
-      const pdfUrl = pdfContainer.dataset.pdfUrl;
+    const pdfViewers = document.querySelectorAll('.pdf-viewer');
+    if (pdfViewers.length > 0) {
       const pdfjsLib = await import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.mjs');
       pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.worker.min.mjs';
 
-      const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
-      const canvas = pdfContainer.querySelector('.pdf-canvas');
-      const context = canvas.getContext('2d');
-      const pageNumSpan = document.getElementById('pdf-page-num');
-      const pageCountSpan = document.getElementById('pdf-page-count');
-      const prevBtn = document.getElementById('pdf-prev');
-      const nextBtn = document.getElementById('pdf-next');
+      for (const pdfContainer of pdfViewers) {
+        const pdfUrl = pdfContainer.dataset.pdfUrl;
+        const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+        const canvas = pdfContainer.querySelector('.pdf-canvas');
+        const context = canvas.getContext('2d');
+        const pageNumSpan = pdfContainer.querySelector('[id$="-page-num"], #pdf-page-num');
+        const pageCountSpan = pdfContainer.querySelector('[id$="-page-count"], #pdf-page-count');
+        const prevBtn = pdfContainer.querySelector('[id$="-prev"], #pdf-prev');
+        const nextBtn = pdfContainer.querySelector('[id$="-next"], #pdf-next');
 
-      let currentPage = 1;
-      const totalPages = pdf.numPages;
-      pageCountSpan.textContent = totalPages;
+        let currentPage = 1;
+        const totalPages = pdf.numPages;
+        pageCountSpan.textContent = totalPages;
 
-      async function renderPage(pageNum) {
-        const page = await pdf.getPage(pageNum);
-        const containerWidth = pdfContainer.querySelector('.pdf-canvas-container').offsetWidth;
-        const unscaledViewport = page.getViewport({ scale: 1 });
-        const scale = containerWidth / unscaledViewport.width;
-        const viewport = page.getViewport({ scale: scale });
+        async function renderPage(pageNum) {
+          const page = await pdf.getPage(pageNum);
+          const containerWidth = pdfContainer.querySelector('.pdf-canvas-container').offsetWidth;
+          const unscaledViewport = page.getViewport({ scale: 1 });
+          const scale = containerWidth / unscaledViewport.width;
+          const viewport = page.getViewport({ scale: scale });
 
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
 
-        await page.render({ canvasContext: context, viewport: viewport }).promise;
-        pageNumSpan.textContent = pageNum;
+          await page.render({ canvasContext: context, viewport: viewport }).promise;
+          pageNumSpan.textContent = pageNum;
 
-        prevBtn.disabled = pageNum <= 1;
-        nextBtn.disabled = pageNum >= totalPages;
+          prevBtn.disabled = pageNum <= 1;
+          nextBtn.disabled = pageNum >= totalPages;
+        }
+
+        prevBtn.addEventListener('click', () => {
+          if (currentPage > 1) {
+            currentPage--;
+            renderPage(currentPage);
+          }
+        });
+
+        nextBtn.addEventListener('click', () => {
+          if (currentPage < totalPages) {
+            currentPage++;
+            renderPage(currentPage);
+          }
+        });
+
+        renderPage(1);
       }
-
-      prevBtn.addEventListener('click', () => {
-        if (currentPage > 1) {
-          currentPage--;
-          renderPage(currentPage);
-        }
-      });
-
-      nextBtn.addEventListener('click', () => {
-        if (currentPage < totalPages) {
-          currentPage++;
-          renderPage(currentPage);
-        }
-      });
-
-      renderPage(1);
     }
   </script>
 </body>

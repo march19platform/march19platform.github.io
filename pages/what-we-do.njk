@@ -49,18 +49,30 @@ permalink: /what-we-do/
     <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
     Organizations We Collaborate With
   </h2>
-  <div class="org-grid">
-    {% for org in collections.organizations %}
-    <a href="{{ org.data.url }}" target="_blank" rel="noopener" class="org-card">
-      {% if org.data.logo %}
-      <img src="{{ org.data.logo }}" alt="{{ org.data.title }}" class="org-logo">
-      {% endif %}
-      <div class="org-info">
-        <h3 class="org-name">{{ org.data.title }}</h3>
-        <p class="org-description">{{ org.data.description }}</p>
+
+  {# Aile Dayanışma Ağı (ADA) #}
+  <div class="org-featured">
+    <div class="org-featured-info">
+      <h3 class="org-featured-name">Aile Dayanışma Ağı (ADA)</h3>
+      <p class="org-featured-description">
+        The Family Solidarity Network (Aile Dayanışma Ağı) is a voluntary grassroots initiative in Türkiye, organized by the families of individuals detained or imprisoned in political and legal operations. Under the leadership and advocacy of Dilek İmamoğlu, the Network provides a platform for mutual support, collective advocacy, and public visibility for families navigating challenging legal circumstances.
+      </p>
+      <p class="org-featured-description">
+        Through weekly solidarity gatherings, public events, and community outreach, Aile Dayanışma Ağı amplifies the voices of affected families, promotes transparency in the justice system, and fosters solidarity among communities facing shared struggles. The initiative has drawn attention and support from civil society and political actors, reflecting broader discussions about justice, rights, and the legal process in Türkiye.
+      </p>
+    </div>
+    <div class="org-featured-pdf">
+      <div class="pdf-viewer" id="ada-pdf-container" data-pdf-url="/assets/orgs/ada-newsletter.pdf">
+        <div class="pdf-canvas-container">
+          <canvas class="pdf-canvas" id="ada-pdf-canvas"></canvas>
+        </div>
+        <div class="pdf-controls">
+          <button class="pdf-nav-btn" id="ada-pdf-prev" disabled>&larr; Prev</button>
+          <span class="pdf-page-info">Page <span id="ada-pdf-page-num">1</span> of <span id="ada-pdf-page-count">-</span></span>
+          <button class="pdf-nav-btn" id="ada-pdf-next">Next &rarr;</button>
+        </div>
       </div>
-    </a>
-    {% endfor %}
+    </div>
   </div>
 </section>
 </div>
