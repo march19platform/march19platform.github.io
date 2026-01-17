@@ -217,9 +217,9 @@ h3 { font-size: var(--font-size-lg); }
 }
 
 .site-header.scrolled {
-  background: linear-gradient(135deg, rgba(105, 8, 8, 0.95) 0%, rgba(74, 6, 6, 0.95) 100%);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, rgba(105, 8, 8, 0.8) 0%, rgba(74, 6, 6, 0.8) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   padding: var(--spacing-xs) 0;
 }
