@@ -667,8 +667,14 @@ main {
   line-height: 1.7;
 }
 
-.org-featured-description:last-child {
-  margin-bottom: 0;
+.org-featured-description:last-of-type {
+  margin-bottom: var(--spacing-md);
+}
+
+.read-more-link {
+  display: inline-block;
+  font-weight: 500;
+  color: var(--color-brand);
 }
 
 .org-featured-image {
