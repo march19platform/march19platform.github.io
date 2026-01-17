@@ -1,9 +1,9 @@
 ---
-layout: layouts/list.njk
+layout: layouts/base.njk
 title: Panel Discussions
-description: Panel discussions, interviews, and community events
 permalink: /panel-discussions/
 ---
+<div class="container">
 {% set upcomingVideos = collections.videos | filterUpcoming(true) %}
 {% set pastVideos = collections.videos | filterUpcoming(false) %}
 
@@ -61,3 +61,4 @@ permalink: /panel-discussions/
   </div>
 </section>
 {% endif %}
+</div>
