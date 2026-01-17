@@ -5,11 +5,8 @@ permalink: /panel-discussions/
 ---
 <div class="container">
 {% set upcomingVideos = collections.videos | filterUpcoming(true) %}
-{% set pastVideos = collections.videos | filterUpcoming(false) %}
 
 {# Watch Our Latest Panel Discussion #}
-{% if pastVideos.length > 0 %}
-{% set latestVideo = pastVideos[0] %}
 <section class="section">
   <h2 class="section-title">
     <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -17,14 +14,13 @@ permalink: /panel-discussions/
   </h2>
   <div class="video-embed">
     <iframe
-      src="https://www.youtube.com/embed/{{ latestVideo.data.youtubeId }}"
-      title="{{ latestVideo.data.title }}"
+      src="https://www.youtube.com/embed/ddA3IEbsNNg"
+      title="Hacer Foggo - December 14, 2025"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen>
     </iframe>
   </div>
 </section>
-{% endif %}
 
 {# Upcoming Panel Discussions #}
 {% if upcomingVideos.length > 0 %}
@@ -44,21 +40,48 @@ permalink: /panel-discussions/
 {% endif %}
 
 {# Past Panel Discussions #}
-{% if pastVideos.length > 1 or (pastVideos.length > 0 and not pastVideos[0].data.youtubeId) %}
 <section class="section">
   <h2 class="section-title">
     <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
     Past Panel Discussions
   </h2>
   <div class="grid grid-2">
-  {% for video in pastVideos %}
-    {% if loop.index > 1 or not video.data.youtubeId %}
-    <a href="{{ video.url }}" class="panel-poster-link">
-      <img src="{{ video.data.poster or '/assets/videos/placeholder-poster.jpg' }}" alt="{{ video.data.title }}" class="panel-poster">
+    <a href="https://www.youtube.com/watch?v=ddA3IEbsNNg" target="_blank" rel="noopener" class="panel-poster-link">
+      <img src="/assets/videos/posters/2025-12-14.jpg" alt="Hacer Foggo - December 14, 2025" class="panel-poster">
     </a>
-    {% endif %}
-  {% endfor %}
+    <a href="https://www.youtube.com/watch?v=O8UVhp3yGn0" target="_blank" rel="noopener" class="panel-poster-link">
+      <img src="/assets/videos/posters/2025-12-07.jpg" alt="Murat Bakan - December 7, 2025" class="panel-poster">
+    </a>
+    <a href="https://www.youtube.com/watch?v=-wpxDh2pgU4" target="_blank" rel="noopener" class="panel-poster-link">
+      <img src="/assets/videos/posters/2025-11-23.jpg" alt="Muge Iplikci - November 23, 2025" class="panel-poster">
+    </a>
+    <a href="https://www.youtube.com/watch?v=roIazalY3oc" target="_blank" rel="noopener" class="panel-poster-link">
+      <img src="/assets/videos/posters/2025-11-08.jpg" alt="Seraf Ozer - November 8, 2025" class="panel-poster">
+    </a>
+    <a href="https://www.youtube.com/watch?v=aQXCZmoeITY" target="_blank" rel="noopener" class="panel-poster-link">
+      <img src="/assets/videos/posters/2025-10-26.jpg" alt="Baris Terkoglu - October 26, 2025" class="panel-poster">
+    </a>
+    <a href="https://www.youtube.com/watch?v=--ygPtA7B4g" target="_blank" rel="noopener" class="panel-poster-link">
+      <img src="/assets/videos/posters/2025-10-05.jpg" alt="Canan Gullu - October 5, 2025" class="panel-poster">
+    </a>
+    <a href="https://www.youtube.com/watch?v=S7hz-rJUZ6o" target="_blank" rel="noopener" class="panel-poster-link">
+      <img src="/assets/videos/posters/2025-09-28.jpg" alt="Ahmet Şık - September 28, 2025" class="panel-poster">
+    </a>
+    <a href="https://www.youtube.com/watch?v=u0oyCoizdY4" target="_blank" rel="noopener" class="panel-poster-link">
+      <img src="/assets/videos/posters/2025-09-13.jpg" alt="Ismail Saymaz - September 13, 2025" class="panel-poster">
+    </a>
+    <a href="https://www.youtube.com/watch?v=E9v1wWVS5WM" target="_blank" rel="noopener" class="panel-poster-link">
+      <img src="/assets/videos/posters/2025-08-17.jpg" alt="Ceyhun Irgil and Utku Cakirozer - August 17, 2025" class="panel-poster">
+    </a>
+    <a href="https://www.youtube.com/watch?v=QPNPtTXBJ60" target="_blank" rel="noopener" class="panel-poster-link">
+      <img src="/assets/videos/posters/2025-07-26.jpg" alt="Huseyin Arif Sariyasar and Melih Can - July 26, 2025" class="panel-poster">
+    </a>
+    <a href="https://www.youtube.com/watch?v=N7KdHT9rq18" target="_blank" rel="noopener" class="panel-poster-link">
+      <img src="/assets/videos/posters/2025-07-20.jpg" alt="Cem Toker - July 20, 2025" class="panel-poster">
+    </a>
+    <a href="https://www.youtube.com/watch?v=VLjdWYR7xcw" target="_blank" rel="noopener" class="panel-poster-link">
+      <img src="/assets/videos/posters/2025-07-06.jpg" alt="Rusen Cakir - July 6, 2025" class="panel-poster">
+    </a>
   </div>
 </section>
-{% endif %}
 </div>
