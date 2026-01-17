@@ -684,6 +684,13 @@ main {
 /* Highlights */
 .highlight-item {
   text-align: center;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.highlight-item:hover {
+  text-decoration: none;
 }
 
 .highlight-image {
@@ -702,6 +709,47 @@ main {
   margin-top: var(--spacing-sm);
   font-size: var(--font-size-sm);
   color: var(--color-text-light);
+}
+
+/* ADA Page */
+.ada-description {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.7;
+}
+
+.ada-newsletter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.ada-newsletter-item {
+  text-align: center;
+}
+
+.ada-newsletter-image {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ada-newsletter-image:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.ada-newsletter-date {
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .ada-newsletter-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Grid */
