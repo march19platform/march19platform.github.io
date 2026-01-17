@@ -5,7 +5,10 @@ title: Home
 <div class="container">
   {# Stay in Touch #}
   <section class="section">
-    <h2 class="section-title">Stay in Touch</h2>
+    <h2 class="section-title">
+      <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+      Stay in Touch
+    </h2>
     <div class="connect-grid">
       <a href="https://www.youtube.com/@March19Platform" target="_blank" rel="noopener" class="connect-link">
         <svg class="connect-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -32,7 +35,10 @@ title: Home
     {% if collections.fanzins.length > 0 %}
     {% set latestFanzin = collections.fanzins[0] %}
     <section class="section">
-      <h2 class="section-title">Read Our Latest Fanzin</h2>
+      <h2 class="section-title">
+        <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+        Read Our Latest Fanzin
+      </h2>
       {% if latestFanzin.data.pdfUrl %}
       <div class="pdf-viewer" id="pdf-container" data-pdf-url="{{ latestFanzin.data.pdfUrl }}">
         <div class="pdf-canvas-container">
@@ -53,7 +59,10 @@ title: Home
     {% if upcomingVideos.length > 0 %}
     {% set nextVideo = upcomingVideos[0] %}
     <section class="section">
-      <h2 class="section-title">Upcoming Panel Discussion</h2>
+      <h2 class="section-title">
+        <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm-8 4H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
+        Upcoming Panel Discussion
+      </h2>
       <div class="upcoming-panel">
         {% if nextVideo.data.poster %}
         <a href="https://www.youtube.com/watch?v=lQ8E4K1zUBI" target="_blank" rel="noopener">
@@ -73,7 +82,10 @@ title: Home
   {% if recentVideos.length > 0 %}
   {% set latestVideo = recentVideos[0] %}
   <section class="section">
-    <h2 class="section-title">Watch Our Latest Panel Discussion</h2>
+    <h2 class="section-title">
+      <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      Watch Our Latest Panel Discussion
+    </h2>
     <div class="video-embed">
       <iframe
         src="https://www.youtube.com/embed/{{ latestVideo.data.youtubeId }}"
@@ -87,13 +99,19 @@ title: Home
 
   {# Spotify Podcast #}
   <section class="section">
-    <h2 class="section-title">Listen to Our Latest Spotify Episode</h2>
+    <h2 class="section-title">
+      <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+      Listen to Our Latest Spotify Episode
+    </h2>
     <iframe style="border-radius:12px" src="https://open.spotify.com/embed/show/6M7JEfkANqxKDzzSbckDwS?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </section>
 
   {# Row 3: Our Projects (3 thumbnails) #}
   <section class="section">
-    <h2 class="section-title">Our Projects</h2>
+    <h2 class="section-title">
+      <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/></svg>
+      Our Projects
+    </h2>
     <div class="grid grid-3">
       {% for project in collections.projects | limit(2) %}
       <a href="{{ project.url }}" class="card card-link">
@@ -113,7 +131,10 @@ title: Home
   {# Row 4: Supported Campaigns (3 thumbnails) #}
   {% if collections.campaigns.length > 0 %}
   <section class="section">
-    <h2 class="section-title">Campaigns We Support</h2>
+    <h2 class="section-title">
+      <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18 11v2h4v-2h-4zm-2 6.61c.96.71 2.21 1.65 3.2 2.39.4-.53.8-1.07 1.2-1.6-.99-.74-2.24-1.68-3.2-2.4-.4.54-.8 1.08-1.2 1.61zM20.4 5.6c-.4-.53-.8-1.07-1.2-1.6-.99.74-2.24 1.68-3.2 2.4.4.53.8 1.07 1.2 1.6.96-.72 2.21-1.65 3.2-2.4zM4 9c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h1v4h2v-4h1l5 3V6L8 9H4zm11.5 3c0-1.33-.58-2.53-1.5-3.35v6.69c.92-.81 1.5-2.01 1.5-3.34z"/></svg>
+      Campaigns We Support
+    </h2>
     <div class="grid grid-3">
       {% for campaign in collections.campaigns | limit(3) %}
       <a href="{{ campaign.url }}">
