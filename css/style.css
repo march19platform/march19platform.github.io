@@ -745,6 +745,13 @@ main {
 
 .ada-newsletter-item {
   text-align: center;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.ada-newsletter-item:hover {
+  text-decoration: none;
 }
 
 .ada-newsletter-image {
