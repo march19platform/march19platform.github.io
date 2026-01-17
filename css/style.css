@@ -221,6 +221,19 @@ h3 { font-size: var(--font-size-lg); }
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: var(--spacing-xs) 0;
+}
+
+.site-header.scrolled .site-logo {
+  height: 36px;
+}
+
+.site-header.scrolled .site-title {
+  font-size: var(--font-size-lg);
+}
+
+.site-header.scrolled .site-slogan {
+  font-size: 0.7rem;
 }
 
 .site-header a {
@@ -256,7 +269,7 @@ h3 { font-size: var(--font-size-lg); }
 .site-logo {
   height: 50px;
   width: auto;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, height 0.3s ease;
 }
 
 .site-branding:hover .site-logo {
@@ -271,6 +284,7 @@ h3 { font-size: var(--font-size-lg); }
 .site-title {
   font-size: var(--font-size-xl);
   font-weight: 700;
+  transition: font-size 0.3s ease;
 }
 
 .site-slogan {
@@ -280,6 +294,7 @@ h3 { font-size: var(--font-size-lg); }
   margin-top: 0.125rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  transition: font-size 0.3s ease;
 }
 
 .site-nav ul {
