@@ -134,7 +134,7 @@ title: Home
     </h2>
     <div class="grid grid-3">
       {% for project in collections.projects | limit(2) %}
-      <a href="{{ project.url }}" class="card card-link">
+      <a href="{{ project.data.externalUrl or project.url }}"{% if project.data.externalUrl %} target="_blank" rel="noopener"{% endif %} class="card card-link">
         <img src="{{ project.data.thumbnail }}" alt="{{ project.data.title }}" class="card-thumbnail">
         <h3 class="card-title">{{ project.data.title }}</h3>
         <p class="card-description">{{ project.data.description }}</p>
