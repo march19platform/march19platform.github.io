@@ -758,6 +758,33 @@ main {
   color: var(--color-text-light);
 }
 
+/* Instagram Embeds */
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  align-items: start;
+}
+
+.instagram-grid .instagram-media {
+  margin: 0 !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+@media (max-width: 900px) {
+  .instagram-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .instagram-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ADA Page */
 .ada-description {
   margin-bottom: var(--spacing-md);
