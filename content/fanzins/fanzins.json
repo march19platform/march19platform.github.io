@@ -1,5 +1,4 @@
 {
-  "layout": "layouts/page.njk",
   "tags": "fanzin",
-  "permalink": "/fanzins/{{ page.fileSlug }}/"
+  "permalink": false
 }

@@ -597,6 +597,7 @@ main {
 /* Fanzin List */
 .fanzin-list {
   list-style: none;
+  max-width: 500px;
 }
 
 .fanzin-list li {
