@@ -266,7 +266,8 @@ The JavaScript in `base.njk` automatically initializes all `.pdf-viewer` element
 ### Add a New Fanzin
 
 1. Upload PDF to `/assets/fanzins/YYYY-MM-DD_issue_NN.pdf`
-2. Create `/content/fanzins/YYYY-MM-DD.md`:
+2. Optimize the PDF for web (see "Optimize PDF for Web" below)
+3. Create `/content/fanzins/YYYY-MM-DD.md`:
    ```yaml
    ---
    title: "Fanzin Issue #NN"
@@ -276,7 +277,32 @@ The JavaScript in `base.njk` automatically initializes all `.pdf-viewer` element
    description: "Description"
    ---
    ```
-3. The homepage and fanzins page auto-update (newest first)
+4. The homepage and fanzins page auto-update (newest first)
+
+### Optimize PDF for Web
+
+Use Ghostscript to reduce PDF file size for faster web loading:
+
+```bash
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen \
+   -dNOPAUSE -dQUIET -dBATCH \
+   -sOutputFile=output.pdf input.pdf
+```
+
+**Quality presets** (from smallest to largest):
+- `/screen` — ~72 dpi, smallest size, good for web viewing
+- `/ebook` — ~150 dpi, balanced quality/size
+- `/printer` — ~300 dpi, high quality
+
+Example for a fanzin:
+```bash
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen \
+   -dNOPAUSE -dQUIET -dBATCH \
+   -sOutputFile=assets/fanzins/2026-01-23_issue_39_optimized.pdf \
+   assets/fanzins/2026-01-23_issue_39.pdf
+```
+
+After verifying the optimized PDF looks acceptable, replace the original with the optimized version.
 
 ### Add a New Panel Discussion (Upcoming)
 
