@@ -54,22 +54,18 @@ title: Home
     </section>
     {% endif %}
 
-    {# Upcoming Video #}
-    {% set upcomingVideos = collections.videos | filterUpcoming(true) %}
-    {% if upcomingVideos.length > 0 %}
-    {% set nextVideo = upcomingVideos[0] %}
+    {# Upcoming Event #}
     <section class="section">
       <h2 class="section-title">
         <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm-8 4H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
-        Upcoming Panel Discussion
+        Upcoming Event
       </h2>
       <div class="upcoming-panel">
-        <a href="https://www.youtube.com/watch?v=5h5ZZonz-Ww" target="_blank" rel="noopener">
-          <img src="/assets/videos/2026-01-25.jpeg" alt="Upcoming Panel Discussion - Can Dundar" class="card-poster" style="border-radius: 4px; margin-bottom: 0;">
+        <a href="/highlights/can-atalay/">
+          <img src="/assets/highlights/can-atalay.jpg" alt="Can Atalay Documentary - March 15, 2026" class="card-poster" style="border-radius: 4px; margin-bottom: 0;">
         </a>
       </div>
     </section>
-    {% endif %}
   </div>
 
   {# Highlights #}
@@ -78,11 +74,7 @@ title: Home
       <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
       Highlights
     </h2>
-    <div class="grid grid-3">
-      <a href="https://www.instagram.com/p/DT4HLS4DDA6" target="_blank" rel="noopener" class="highlight-item">
-        <img src="/assets/highlights/can-atalay.jpg" alt="Can Atalay" class="highlight-image">
-        <p class="highlight-caption">Can Atalay Documentary - March 15, 2026</p>
-      </a>
+    <div class="grid grid-2">
       <a href="https://www.instagram.com/p/DTdruLZEqhr/" target="_blank" rel="noopener" class="highlight-item">
         <img src="/assets/highlights/nyc-gathering-march15.jpg" alt="Gathering in NYC" class="highlight-image">
         <p class="highlight-caption">Gathering in NYC - March 15, 2026</p>
@@ -95,9 +87,6 @@ title: Home
   </section>
 
   {# Watch Our Latest Panel Discussion #}
-  {% set recentVideos = collections.videos | filterUpcoming(false) %}
-  {% if recentVideos.length > 0 %}
-  {% set latestVideo = recentVideos[0] %}
   <section class="section">
     <h2 class="section-title">
       <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -105,14 +94,13 @@ title: Home
     </h2>
     <div class="video-embed">
       <iframe
-        src="https://www.youtube.com/embed/{{ latestVideo.data.youtubeId }}"
-        title="{{ latestVideo.data.title }}"
+        src="https://www.youtube.com/embed/5h5ZZonz-Ww"
+        title="Can Dundar"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
       </iframe>
     </div>
   </section>
-  {% endif %}
 
   {# Spotify Podcast #}
   <section class="section">
