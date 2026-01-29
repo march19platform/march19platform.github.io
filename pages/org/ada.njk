@@ -20,58 +20,147 @@ permalink: /org/ada/
 <section class="section">
   <h2 class="section-title">
     <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-    Read Our Latest ADA Newsletter
+    ADA Newsletters
   </h2>
-  <div class="pdf-viewer" id="ada-pdf-container" data-pdf-url="/assets/ada/pdfs/ada-2026-01-27.pdf">
-    <div class="pdf-canvas-container">
-      <canvas class="pdf-canvas" id="ada-pdf-canvas"></canvas>
+  <div class="ada-newsletter-viewer" id="ada-newsletter-viewer">
+    <div class="ada-newsletter-controls ada-newsletter-controls-top">
+      <button class="pdf-nav-btn" id="ada-prev-top">&larr; Newer</button>
+      <span class="ada-newsletter-info">
+        <span id="ada-current-num-top">1</span> of <span id="ada-total-num-top">-</span>
+      </span>
+      <button class="pdf-nav-btn" id="ada-next-top">Older &rarr;</button>
     </div>
-    <div class="pdf-controls">
-      <button class="pdf-nav-btn" id="ada-pdf-prev" disabled>&larr; Prev</button>
-      <span class="pdf-page-info">Page <span id="ada-pdf-page-num">1</span> of <span id="ada-pdf-page-count">-</span></span>
-      <button class="pdf-nav-btn" id="ada-pdf-next">Next &rarr;</button>
+    <div class="ada-newsletter-date" id="ada-newsletter-date"></div>
+    <div class="ada-newsletter-canvas-container">
+      <canvas class="ada-newsletter-canvas" id="ada-newsletter-canvas"></canvas>
     </div>
+    <div class="ada-newsletter-controls">
+      <button class="pdf-nav-btn" id="ada-prev">&larr; Newer</button>
+      <span class="ada-newsletter-info">
+        <span id="ada-current-num">1</span> of <span id="ada-total-num">-</span>
+      </span>
+      <button class="pdf-nav-btn" id="ada-next">Older &rarr;</button>
+    </div>
+    <a href="#" id="ada-download-link" class="ada-download-link" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+      Download PDF
+    </a>
   </div>
 </section>
 
 <section class="section">
   <h2 class="section-title">
     <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
-    Past Newsletters
+    All Issues
   </h2>
-  <div class="ada-newsletter-grid">
-    <a href="/assets/ada/pdfs/ada-2026-01-27.pdf" target="_blank" rel="noopener" class="ada-newsletter-item">
-      <img src="/assets/ada/ada-news-jan27.jpg" alt="ADA Newsletter - January 27, 2026" class="ada-newsletter-image">
-      <p class="ada-newsletter-date">January 27, 2026</p>
-    </a>
-    <a href="/assets/ada/pdfs/ada-2026-01-16.pdf" target="_blank" rel="noopener" class="ada-newsletter-item">
-      <img src="/assets/ada/ada-news-jan17.jpg" alt="ADA Newsletter - January 16, 2026" class="ada-newsletter-image">
-      <p class="ada-newsletter-date">January 16, 2026</p>
-    </a>
-    <a href="/assets/ada/pdfs/ada-2026-01-09.pdf" target="_blank" rel="noopener" class="ada-newsletter-item">
-      <img src="/assets/ada/ada-news-jan9.png" alt="ADA Newsletter - January 9, 2026" class="ada-newsletter-image">
-      <p class="ada-newsletter-date">January 9, 2026</p>
-    </a>
-    <a href="/assets/ada/pdfs/ada-2025-12-31.pdf" target="_blank" rel="noopener" class="ada-newsletter-item">
-      <img src="/assets/ada/ada-news-dec31.png" alt="ADA Newsletter - December 31, 2025" class="ada-newsletter-image">
-      <p class="ada-newsletter-date">December 31, 2025</p>
-    </a>
-    <a href="/assets/ada/pdfs/ada-2025-12-26.pdf" target="_blank" rel="noopener" class="ada-newsletter-item">
-      <img src="/assets/ada/ada-news-dec26.png" alt="ADA Newsletter - December 26, 2025" class="ada-newsletter-image">
-      <p class="ada-newsletter-date">December 26, 2025</p>
-    </a>
-    <a href="/assets/ada/pdfs/ada-2025-12-19.pdf" target="_blank" rel="noopener" class="ada-newsletter-item">
-      <img src="/assets/ada/ada-news-dec19.png" alt="ADA Newsletter - December 19, 2025" class="ada-newsletter-image">
-      <p class="ada-newsletter-date">December 19, 2025</p>
-    </a>
-    <a href="/assets/ada/pdfs/ada-2025-12-05.pdf" target="_blank" rel="noopener" class="ada-newsletter-item">
-      <img src="/assets/ada/ada-news-nov21.png" alt="ADA Newsletter - December 5, 2025" class="ada-newsletter-image">
-      <p class="ada-newsletter-date">December 5, 2025</p>
-    </a>
-    <a href="/assets/ada/pdfs/ada-2025-11-21.pdf" target="_blank" rel="noopener" class="ada-newsletter-item">
-      <img src="/assets/ada/ada-news-nov21.png" alt="ADA Newsletter - November 21, 2025" class="ada-newsletter-image">
-      <p class="ada-newsletter-date">November 21, 2025</p>
-    </a>
-  </div>
+  <ul class="ada-issue-list">
+    <li>
+      <a href="/assets/ada/pdfs/ada-2026-01-27.pdf" target="_blank" rel="noopener">January 27, 2026</a>
+    </li>
+    <li>
+      <a href="/assets/ada/pdfs/ada-2026-01-16.pdf" target="_blank" rel="noopener">January 16, 2026</a>
+    </li>
+    <li>
+      <a href="/assets/ada/pdfs/ada-2026-01-09.pdf" target="_blank" rel="noopener">January 9, 2026</a>
+    </li>
+    <li>
+      <a href="/assets/ada/pdfs/ada-2025-12-31.pdf" target="_blank" rel="noopener">December 31, 2025</a>
+    </li>
+    <li>
+      <a href="/assets/ada/pdfs/ada-2025-12-26.pdf" target="_blank" rel="noopener">December 26, 2025</a>
+    </li>
+    <li>
+      <a href="/assets/ada/pdfs/ada-2025-12-19.pdf" target="_blank" rel="noopener">December 19, 2025</a>
+    </li>
+    <li>
+      <a href="/assets/ada/pdfs/ada-2025-12-05.pdf" target="_blank" rel="noopener">December 5, 2025</a>
+    </li>
+    <li>
+      <a href="/assets/ada/pdfs/ada-2025-11-21.pdf" target="_blank" rel="noopener">November 21, 2025</a>
+    </li>
+  </ul>
 </section>
 </div>
+
+<script type="module">
+  const newsletters = [
+    { date: 'January 27, 2026', url: '/assets/ada/pdfs/ada-2026-01-27.pdf' },
+    { date: 'January 16, 2026', url: '/assets/ada/pdfs/ada-2026-01-16.pdf' },
+    { date: 'January 9, 2026', url: '/assets/ada/pdfs/ada-2026-01-09.pdf' },
+    { date: 'December 31, 2025', url: '/assets/ada/pdfs/ada-2025-12-31.pdf' },
+    { date: 'December 26, 2025', url: '/assets/ada/pdfs/ada-2025-12-26.pdf' },
+    { date: 'December 19, 2025', url: '/assets/ada/pdfs/ada-2025-12-19.pdf' },
+    { date: 'December 5, 2025', url: '/assets/ada/pdfs/ada-2025-12-05.pdf' },
+    { date: 'November 21, 2025', url: '/assets/ada/pdfs/ada-2025-11-21.pdf' }
+  ];
+
+  const pdfjsLib = await import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.mjs');
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.worker.min.mjs';
+
+  const canvas = document.getElementById('ada-newsletter-canvas');
+  const context = canvas.getContext('2d');
+  const dateEl = document.getElementById('ada-newsletter-date');
+  const currentNumEl = document.getElementById('ada-current-num');
+  const totalNumEl = document.getElementById('ada-total-num');
+  const currentNumTopEl = document.getElementById('ada-current-num-top');
+  const totalNumTopEl = document.getElementById('ada-total-num-top');
+  const prevBtn = document.getElementById('ada-prev');
+  const nextBtn = document.getElementById('ada-next');
+  const prevBtnTop = document.getElementById('ada-prev-top');
+  const nextBtnTop = document.getElementById('ada-next-top');
+  const downloadLink = document.getElementById('ada-download-link');
+  const canvasContainer = document.querySelector('.ada-newsletter-canvas-container');
+
+  let currentIndex = 0;
+  totalNumEl.textContent = newsletters.length;
+  totalNumTopEl.textContent = newsletters.length;
+
+  async function renderNewsletter(index) {
+    const newsletter = newsletters[index];
+    dateEl.textContent = newsletter.date;
+    downloadLink.href = newsletter.url;
+    currentNumEl.textContent = index + 1;
+    currentNumTopEl.textContent = index + 1;
+
+    const pdf = await pdfjsLib.getDocument(newsletter.url).promise;
+    const page = await pdf.getPage(1);
+
+    const containerWidth = canvasContainer.offsetWidth;
+    const unscaledViewport = page.getViewport({ scale: 1 });
+    const scale = containerWidth / unscaledViewport.width;
+    const viewport = page.getViewport({ scale: scale });
+
+    canvas.height = viewport.height;
+    canvas.width = viewport.width;
+
+    await page.render({ canvasContext: context, viewport: viewport }).promise;
+
+    const atStart = index <= 0;
+    const atEnd = index >= newsletters.length - 1;
+    prevBtn.disabled = atStart;
+    nextBtn.disabled = atEnd;
+    prevBtnTop.disabled = atStart;
+    nextBtnTop.disabled = atEnd;
+  }
+
+  function goNewer() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      renderNewsletter(currentIndex);
+    }
+  }
+
+  function goOlder() {
+    if (currentIndex < newsletters.length - 1) {
+      currentIndex++;
+      renderNewsletter(currentIndex);
+    }
+  }
+
+  prevBtn.addEventListener('click', goNewer);
+  nextBtn.addEventListener('click', goOlder);
+  prevBtnTop.addEventListener('click', goNewer);
+  nextBtnTop.addEventListener('click', goOlder);
+
+  renderNewsletter(0);
+</script>
