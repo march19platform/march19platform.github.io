@@ -6,6 +6,15 @@ permalink: /about/
 
 <div class="container content">
 
+<div class="video-embed">
+  <iframe
+    src="https://www.youtube.com/embed/eZEXlSVpgjE"
+    title="About March 19 Platform"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+
 ## Who are we?
 
 We are an inclusive, nonpartisan grassroots movement committed to upholding democratic values, the rule of law, and human rights in Türkiye. We empower communities, amplify silenced voices, and build collective strength through peaceful, community-centered action.
