@@ -8,7 +8,7 @@ permalink: /about/
 
 <div class="video-embed">
   <iframe
-    src="https://www.youtube.com/embed/eZEXlSVpgjE"
+    src="https://www.youtube.com/embed/XR6PscEczrw"
     title="About March 19 Platform"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen>
