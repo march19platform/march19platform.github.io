@@ -45,9 +45,10 @@
     // Header scroll effect
     const header = document.querySelector('.site-header');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
+      const isScrolled = header.classList.contains('scrolled');
+      if (!isScrolled && window.scrollY > 50) {
         header.classList.add('scrolled');
-      } else {
+      } else if (isScrolled && window.scrollY < 10) {
         header.classList.remove('scrolled');
       }
     });
