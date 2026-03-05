@@ -31,7 +31,7 @@ permalink: /panel-discussions/
   </h2>
   <div class="grid grid-2">
   {% for video in upcomingVideos %}
-    <a href="{{ video.url }}" class="panel-poster-link">
+    <a href="{% if video.data.youtubeId %}https://www.youtube.com/live/{{ video.data.youtubeId }}{% else %}{{ video.url }}{% endif %}" {% if video.data.youtubeId %}target="_blank" rel="noopener"{% endif %} class="panel-poster-link">
       <img src="{{ video.data.poster or '/assets/videos/placeholder-poster.jpg' }}" alt="{{ video.data.title }}" class="panel-poster">
     </a>
   {% endfor %}
