@@ -14,6 +14,13 @@ permalink: /highlights/can-atalay/
   </iframe>
 </div>
 
+<div style="text-align: center; margin-top: var(--spacing-md); margin-bottom: var(--spacing-md);">
+  <a href="https://docs.google.com/document/d/1naTVF_nXUdQQ9vHj1duD3reryTKmKcJbo9R8X_hTIZM/edit?tab=t.0" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-brand); color: var(--color-text-on-brand); padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600;">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+    Click here to access our official press release
+  </a>
+</div>
+
 ## The Can Atalay Documentary
 **New York Screening and Conversation**
 
