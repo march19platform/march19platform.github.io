@@ -29,25 +29,30 @@ title: Home
     </div>
   </section>
 
-  {# Row 1: Latest Fanzin (left) + Upcoming Video (right) #}
+  {# Row 2: Latest Fanzin (left) + Upcoming Panel Discussion (right) #}
   <div class="grid grid-2">
-    {# 1 Year Anniversary Document #}
+    {# Latest Fanzin #}
+    {% if collections.fanzins.length > 0 %}
+    {% set latestFanzin = collections.fanzins[0] %}
     <section class="section">
       <h2 class="section-title">
-        <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
-        A Year in Review
+        <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+        Read Our Latest Fanzin
       </h2>
-      <div class="pdf-viewer" id="pdf-container" data-pdf-url="/assets/2026-03-19.pdf">
+      {% if latestFanzin.data.pdfUrl %}
+      <div class="pdf-viewer" id="fanzin-container" data-pdf-url="{{ latestFanzin.data.pdfUrl }}">
         <div class="pdf-canvas-container">
           <canvas class="pdf-canvas"></canvas>
         </div>
         <div class="pdf-controls">
-          <button class="pdf-nav-btn" id="pdf-prev" disabled>&larr; Prev</button>
-          <span class="pdf-page-info">Page <span id="pdf-page-num">1</span> of <span id="pdf-page-count">-</span></span>
-          <button class="pdf-nav-btn" id="pdf-next">Next &rarr;</button>
+          <button class="pdf-nav-btn" id="fanzin-prev" disabled>&larr; Prev</button>
+          <span class="pdf-page-info">Page <span id="fanzin-page-num">1</span> of <span id="fanzin-page-count">-</span></span>
+          <button class="pdf-nav-btn" id="fanzin-next">Next &rarr;</button>
         </div>
       </div>
+      {% endif %}
     </section>
+    {% endif %}
 
     {# Upcoming Panel Discussion #}
     <section class="section">
@@ -62,6 +67,25 @@ title: Home
       </div>
     </section>
   </div>
+
+  {# A Year in Review — 2-page spread #}
+  <section class="section">
+    <h2 class="section-title">
+      <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
+      A Year in Review
+    </h2>
+    <div id="review-viewer" data-pdf-url="/assets/2026-03-19.pdf">
+      <div class="grid grid-2" id="review-pages" style="gap: var(--spacing-xs);">
+        <div class="pdf-canvas-container"><canvas id="review-canvas-left"></canvas></div>
+        <div class="pdf-canvas-container"><canvas id="review-canvas-right"></canvas></div>
+      </div>
+      <div class="pdf-controls" style="margin-top: var(--spacing-sm);">
+        <button class="pdf-nav-btn" id="review-prev" disabled>&larr; Prev</button>
+        <span class="pdf-page-info">Pages <span id="review-page-info">1-2</span> of <span id="review-page-count">-</span></span>
+        <button class="pdf-nav-btn" id="review-next">Next &rarr;</button>
+      </div>
+    </div>
+  </section>
 
   {# Highlights — hidden for now, will revisit in coming weeks
   <section class="section">
@@ -147,3 +171,58 @@ title: Home
     <script async src="//www.instagram.com/embed.js"></script>
   </section>
 </div>
+
+<script type="module">
+  const reviewViewer = document.getElementById('review-viewer');
+  if (reviewViewer) {
+    const pdfjsLib = await import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.mjs');
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.worker.min.mjs';
+
+    const pdfUrl = reviewViewer.dataset.pdfUrl;
+    const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+    const totalPages = pdf.numPages;
+    const canvasLeft = document.getElementById('review-canvas-left');
+    const canvasRight = document.getElementById('review-canvas-right');
+    const pageInfo = document.getElementById('review-page-info');
+    const pageCount = document.getElementById('review-page-count');
+    const prevBtn = document.getElementById('review-prev');
+    const nextBtn = document.getElementById('review-next');
+    let currentSpread = 0;
+
+    pageCount.textContent = totalPages;
+
+    async function renderPage(canvas, pageNum) {
+      if (pageNum > totalPages) {
+        canvas.style.display = 'none';
+        return;
+      }
+      canvas.style.display = 'block';
+      const page = await pdf.getPage(pageNum);
+      const container = canvas.parentElement;
+      const containerWidth = container.offsetWidth;
+      const unscaledViewport = page.getViewport({ scale: 1 });
+      const scale = containerWidth / unscaledViewport.width;
+      const viewport = page.getViewport({ scale });
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+      await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+    }
+
+    async function renderSpread(spreadIndex) {
+      const leftPage = spreadIndex * 2 + 1;
+      const rightPage = spreadIndex * 2 + 2;
+      await Promise.all([renderPage(canvasLeft, leftPage), renderPage(canvasRight, rightPage)]);
+      if (rightPage <= totalPages) {
+        pageInfo.textContent = leftPage + '-' + rightPage;
+      } else {
+        pageInfo.textContent = leftPage;
+      }
+      prevBtn.disabled = spreadIndex <= 0;
+      nextBtn.disabled = rightPage >= totalPages;
+    }
+
+    prevBtn.addEventListener('click', () => { if (currentSpread > 0) { currentSpread--; renderSpread(currentSpread); } });
+    nextBtn.addEventListener('click', () => { if ((currentSpread + 1) * 2 < totalPages) { currentSpread++; renderSpread(currentSpread); } });
+    renderSpread(0);
+  }
+</script>
