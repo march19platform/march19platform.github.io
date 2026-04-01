@@ -360,6 +360,12 @@ To deploy: Push to `main` branch. GitHub Actions will build and deploy automatic
 
 ---
 
+### Update Instagram Embeds
+
+Instagram embeds appear on **both** `index.njk` (homepage) and `pages/what-we-do.njk`. When updating the embeds, make sure to update them on **both pages** to keep them in sync.
+
+---
+
 ## Style Conventions
 
 1. **No emojis** unless explicitly requested
