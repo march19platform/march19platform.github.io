@@ -4,7 +4,7 @@ title: Panel Discussions
 permalink: /panel-discussions/
 ---
 <div class="container">
-{% set upcomingVideos = collections.videos | filterUpcoming(true) %}
+{% set upcomingVideos = collections.videos | filterUpcoming(true) | reverse %}
 
 {# Watch Our Latest Panel Discussion #}
 <section class="section">
@@ -14,8 +14,8 @@ permalink: /panel-discussions/
   </h2>
   <div class="video-embed">
     <iframe
-      src="https://www.youtube.com/embed/hGUnAYvmn9E"
-      title="Kemal Aytaç - March 29, 2026"
+      src="https://www.youtube.com/embed/FIYluoA7zTM"
+      title="Boğaziçi Direnişi - April 5, 2026"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen>
     </iframe>
@@ -46,6 +46,10 @@ permalink: /panel-discussions/
     Past Panel Discussions
   </h2>
   <div class="grid grid-2">
+    <a href="https://www.youtube.com/watch?v=FIYluoA7zTM" target="_blank" rel="noopener" class="panel-item">
+      <img src="/assets/videos/posters/2026-04-05.jpg" alt="Boğaziçi Direnişi - April 5, 2026" class="panel-poster">
+      <p class="panel-caption"><strong>Boğaziçi Direnişi</strong> - April 5, 2026</p>
+    </a>
     <a href="https://www.youtube.com/watch?v=hGUnAYvmn9E" target="_blank" rel="noopener" class="panel-item">
       <img src="/assets/videos/posters/2026-03-29.jpg" alt="Kemal Aytaç - March 29, 2026" class="panel-poster">
       <p class="panel-caption"><strong>Kemal Aytaç</strong> - March 29, 2026</p>
