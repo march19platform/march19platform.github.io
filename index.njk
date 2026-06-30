@@ -29,44 +29,29 @@ title: Home
     </div>
   </section>
 
-  {# Row 2: Latest Fanzin (left) + Upcoming Panel Discussion (right) #}
-  <div class="grid grid-2">
-    {# Latest Fanzin #}
-    {% if collections.fanzins.length > 0 %}
-    {% set latestFanzin = collections.fanzins[0] %}
-    <section class="section">
-      <h2 class="section-title">
-        <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-        Read Our Latest Fanzin
-      </h2>
-      {% if latestFanzin.data.pdfUrl %}
-      <div class="pdf-viewer" id="fanzin-container" data-pdf-url="{{ latestFanzin.data.pdfUrl }}">
-        <div class="pdf-canvas-container">
-          <canvas class="pdf-canvas"></canvas>
-        </div>
-        <div class="pdf-controls">
-          <button class="pdf-nav-btn" id="fanzin-prev" disabled>&larr; Prev</button>
-          <span class="pdf-page-info">Page <span id="fanzin-page-num">1</span> of <span id="fanzin-page-count">-</span></span>
-          <button class="pdf-nav-btn" id="fanzin-next">Next &rarr;</button>
-        </div>
+  {# Latest Fanzin — 2-page spread #}
+  {% if collections.fanzins.length > 0 %}
+  {% set latestFanzin = collections.fanzins[0] %}
+  {% if latestFanzin.data.pdfUrl %}
+  <section class="section">
+    <h2 class="section-title">
+      <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+      Read Our Latest Fanzin
+    </h2>
+    <div class="spread-viewer" data-pdf-url="{{ latestFanzin.data.pdfUrl }}">
+      <div class="grid grid-2" style="gap: var(--spacing-xs);">
+        <div class="pdf-canvas-container"><canvas class="spread-canvas-left"></canvas></div>
+        <div class="pdf-canvas-container"><canvas class="spread-canvas-right"></canvas></div>
       </div>
-      {% endif %}
-    </section>
-    {% endif %}
-
-    {# Upcoming Panel Discussion #}
-    <section class="section">
-      <h2 class="section-title">
-        <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm-8 4H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
-        Upcoming Panel Discussion
-      </h2>
-      <div class="upcoming-panel">
-        <a href="https://www.youtube.com/@March19Platform" target="_blank" rel="noopener">
-          <img src="/assets/videos/posters/2026-05-31.jpg" alt="Furkan Karabay - May 31, 2026" class="card-poster" style="border-radius: 4px; margin-bottom: 0;">
-        </a>
+      <div class="pdf-controls" style="margin-top: var(--spacing-sm);">
+        <button class="pdf-nav-btn spread-prev" disabled>&larr; Prev</button>
+        <span class="pdf-page-info">Pages <span class="spread-page-info">1-2</span> of <span class="spread-page-count">-</span></span>
+        <button class="pdf-nav-btn spread-next">Next &rarr;</button>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
+  {% endif %}
+  {% endif %}
 
   {# A Year in Review — 2-page spread #}
   <section class="section">
@@ -74,15 +59,15 @@ title: Home
       <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
       A Year in Review
     </h2>
-    <div id="review-viewer" data-pdf-url="/assets/2026-03-19.pdf">
-      <div class="grid grid-2" id="review-pages" style="gap: var(--spacing-xs);">
-        <div class="pdf-canvas-container"><canvas id="review-canvas-left"></canvas></div>
-        <div class="pdf-canvas-container"><canvas id="review-canvas-right"></canvas></div>
+    <div class="spread-viewer" data-pdf-url="/assets/2026-03-19.pdf">
+      <div class="grid grid-2" style="gap: var(--spacing-xs);">
+        <div class="pdf-canvas-container"><canvas class="spread-canvas-left"></canvas></div>
+        <div class="pdf-canvas-container"><canvas class="spread-canvas-right"></canvas></div>
       </div>
       <div class="pdf-controls" style="margin-top: var(--spacing-sm);">
-        <button class="pdf-nav-btn" id="review-prev" disabled>&larr; Prev</button>
-        <span class="pdf-page-info">Pages <span id="review-page-info">1-2</span> of <span id="review-page-count">-</span></span>
-        <button class="pdf-nav-btn" id="review-next">Next &rarr;</button>
+        <button class="pdf-nav-btn spread-prev" disabled>&larr; Prev</button>
+        <span class="pdf-page-info">Pages <span class="spread-page-info">1-2</span> of <span class="spread-page-count">-</span></span>
+        <button class="pdf-nav-btn spread-next">Next &rarr;</button>
       </div>
     </div>
   </section>
@@ -178,56 +163,60 @@ title: Home
 </div>
 
 <script type="module">
-  const reviewViewer = document.getElementById('review-viewer');
-  if (reviewViewer) {
+  const spreadViewers = document.querySelectorAll('.spread-viewer');
+  if (spreadViewers.length > 0) {
     const pdfjsLib = await import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.mjs');
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.worker.min.mjs';
 
-    const pdfUrl = reviewViewer.dataset.pdfUrl;
-    const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
-    const totalPages = pdf.numPages;
-    const canvasLeft = document.getElementById('review-canvas-left');
-    const canvasRight = document.getElementById('review-canvas-right');
-    const pageInfo = document.getElementById('review-page-info');
-    const pageCount = document.getElementById('review-page-count');
-    const prevBtn = document.getElementById('review-prev');
-    const nextBtn = document.getElementById('review-next');
-    let currentSpread = 0;
+    async function setupSpreadViewer(viewer) {
+      const pdfUrl = viewer.dataset.pdfUrl;
+      const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+      const totalPages = pdf.numPages;
+      const canvasLeft = viewer.querySelector('.spread-canvas-left');
+      const canvasRight = viewer.querySelector('.spread-canvas-right');
+      const pageInfo = viewer.querySelector('.spread-page-info');
+      const pageCount = viewer.querySelector('.spread-page-count');
+      const prevBtn = viewer.querySelector('.spread-prev');
+      const nextBtn = viewer.querySelector('.spread-next');
+      let currentSpread = 0;
 
-    pageCount.textContent = totalPages;
+      pageCount.textContent = totalPages;
 
-    async function renderPage(canvas, pageNum) {
-      if (pageNum > totalPages) {
-        canvas.style.display = 'none';
-        return;
+      async function renderPage(canvas, pageNum) {
+        if (pageNum > totalPages) {
+          canvas.style.display = 'none';
+          return;
+        }
+        canvas.style.display = 'block';
+        const page = await pdf.getPage(pageNum);
+        const container = canvas.parentElement;
+        const containerWidth = container.offsetWidth;
+        const unscaledViewport = page.getViewport({ scale: 1 });
+        const scale = containerWidth / unscaledViewport.width;
+        const viewport = page.getViewport({ scale });
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+        await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
       }
-      canvas.style.display = 'block';
-      const page = await pdf.getPage(pageNum);
-      const container = canvas.parentElement;
-      const containerWidth = container.offsetWidth;
-      const unscaledViewport = page.getViewport({ scale: 1 });
-      const scale = containerWidth / unscaledViewport.width;
-      const viewport = page.getViewport({ scale });
-      canvas.height = viewport.height;
-      canvas.width = viewport.width;
-      await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+
+      async function renderSpread(spreadIndex) {
+        const leftPage = spreadIndex * 2 + 1;
+        const rightPage = spreadIndex * 2 + 2;
+        await Promise.all([renderPage(canvasLeft, leftPage), renderPage(canvasRight, rightPage)]);
+        if (rightPage <= totalPages) {
+          pageInfo.textContent = leftPage + '-' + rightPage;
+        } else {
+          pageInfo.textContent = leftPage;
+        }
+        prevBtn.disabled = spreadIndex <= 0;
+        nextBtn.disabled = rightPage >= totalPages;
+      }
+
+      prevBtn.addEventListener('click', () => { if (currentSpread > 0) { currentSpread--; renderSpread(currentSpread); } });
+      nextBtn.addEventListener('click', () => { if ((currentSpread + 1) * 2 < totalPages) { currentSpread++; renderSpread(currentSpread); } });
+      renderSpread(0);
     }
 
-    async function renderSpread(spreadIndex) {
-      const leftPage = spreadIndex * 2 + 1;
-      const rightPage = spreadIndex * 2 + 2;
-      await Promise.all([renderPage(canvasLeft, leftPage), renderPage(canvasRight, rightPage)]);
-      if (rightPage <= totalPages) {
-        pageInfo.textContent = leftPage + '-' + rightPage;
-      } else {
-        pageInfo.textContent = leftPage;
-      }
-      prevBtn.disabled = spreadIndex <= 0;
-      nextBtn.disabled = rightPage >= totalPages;
-    }
-
-    prevBtn.addEventListener('click', () => { if (currentSpread > 0) { currentSpread--; renderSpread(currentSpread); } });
-    nextBtn.addEventListener('click', () => { if ((currentSpread + 1) * 2 < totalPages) { currentSpread++; renderSpread(currentSpread); } });
-    renderSpread(0);
+    spreadViewers.forEach(setupSpreadViewer);
   }
 </script>
