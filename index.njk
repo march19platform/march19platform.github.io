@@ -29,6 +29,27 @@ title: Home
     </div>
   </section>
 
+  {# 500th Day — 2-page spread #}
+  <section class="section">
+    <h2 class="section-title">
+      <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      500th Day
+    </h2>
+    <div class="spread-viewer" data-pdf-url="/assets/500th-day.pdf">
+      <a href="/500th-day/" class="spread-link" aria-label="Open 500th Day page">
+        <div class="grid grid-2" style="gap: var(--spacing-xs);">
+          <div class="pdf-canvas-container"><canvas class="spread-canvas-left"></canvas></div>
+          <div class="pdf-canvas-container"><canvas class="spread-canvas-right"></canvas></div>
+        </div>
+      </a>
+      <div class="pdf-controls" style="margin-top: var(--spacing-sm);">
+        <button class="pdf-nav-btn spread-prev" disabled>&larr; Prev</button>
+        <span class="pdf-page-info">Pages <span class="spread-page-info">1-2</span> of <span class="spread-page-count">-</span></span>
+        <button class="pdf-nav-btn spread-next">Next &rarr;</button>
+      </div>
+    </div>
+  </section>
+
   {# Latest Fanzin — 2-page spread #}
   {% if collections.fanzins.length > 0 %}
   {% set latestFanzin = collections.fanzins[0] %}
@@ -52,25 +73,6 @@ title: Home
   </section>
   {% endif %}
   {% endif %}
-
-  {# A Year in Review — 2-page spread #}
-  <section class="section">
-    <h2 class="section-title">
-      <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
-      A Year in Review
-    </h2>
-    <div class="spread-viewer" data-pdf-url="/assets/2026-03-19.pdf">
-      <div class="grid grid-2" style="gap: var(--spacing-xs);">
-        <div class="pdf-canvas-container"><canvas class="spread-canvas-left"></canvas></div>
-        <div class="pdf-canvas-container"><canvas class="spread-canvas-right"></canvas></div>
-      </div>
-      <div class="pdf-controls" style="margin-top: var(--spacing-sm);">
-        <button class="pdf-nav-btn spread-prev" disabled>&larr; Prev</button>
-        <span class="pdf-page-info">Pages <span class="spread-page-info">1-2</span> of <span class="spread-page-count">-</span></span>
-        <button class="pdf-nav-btn spread-next">Next &rarr;</button>
-      </div>
-    </div>
-  </section>
 
   {# Highlights — hidden for now, will revisit in coming weeks
   <section class="section">
