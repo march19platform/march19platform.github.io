@@ -479,11 +479,21 @@ main {
   justify-content: center;
 }
 
+/* Scoped to .pdf-viewer: the .spread-viewer measures offsetWidth, so padding
+   here would push its canvases past the container's content box. */
+.pdf-viewer .pdf-canvas-container {
+  padding: var(--spacing-sm);
+  align-items: center;
+}
+
 .pdf-canvas {
   width: auto;
   max-width: 100%;
   max-height: 70vh;
+  object-fit: contain;
   display: block;
+  border-radius: 4px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 
 .pdf-controls {

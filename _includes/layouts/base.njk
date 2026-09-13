@@ -74,12 +74,23 @@
         const totalPages = pdf.numPages;
         pageCountSpan.textContent = totalPages;
 
+        const canvasContainer = pdfContainer.querySelector('.pdf-canvas-container');
+
         async function renderPage(pageNum) {
           const page = await pdf.getPage(pageNum);
-          const containerWidth = pdfContainer.querySelector('.pdf-canvas-container').offsetWidth;
+          const styles = getComputedStyle(canvasContainer);
+          const paddingX = parseFloat(styles.paddingLeft) + parseFloat(styles.paddingRight);
+          const paddingY = parseFloat(styles.paddingTop) + parseFloat(styles.paddingBottom);
+          const maxHeight = parseFloat(styles.maxHeight);
+          const availableWidth = canvasContainer.clientWidth - paddingX;
+          const availableHeight = isNaN(maxHeight) ? Infinity : maxHeight - paddingY;
           const dpr = window.devicePixelRatio || 1;
           const unscaledViewport = page.getViewport({ scale: 1 });
-          const scale = containerWidth / unscaledViewport.width;
+          // Fit within both dimensions so the page keeps its aspect ratio
+          const scale = Math.min(
+            availableWidth / unscaledViewport.width,
+            availableHeight / unscaledViewport.height
+          );
           const viewport = page.getViewport({ scale: scale * dpr });
 
           canvas.height = viewport.height;
@@ -106,6 +117,12 @@
             currentPage++;
             renderPage(currentPage);
           }
+        });
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => renderPage(currentPage), 150);
         });
 
         renderPage(1);
