@@ -265,9 +265,11 @@ The JavaScript in `base.njk` automatically initializes all `.pdf-viewer` element
 
 ### Add a New Fanzin
 
-1. Upload PDF to `/assets/fanzins/YYYY-MM-DD_issue_NN.pdf`
-2. Optimize the PDF for web (see "Optimize PDF for Web" below)
-3. Create `/content/fanzins/YYYY-MM-DD.md`:
+1. Determine the publication date (see "Find a Fanzin's Date" below) — every
+   filename and the sort order depend on it
+2. Upload PDF to `/assets/fanzins/YYYY-MM-DD_issue_NN.pdf`
+3. Optimize the PDF for web (see "Optimize PDF for Web" below)
+4. Create `/content/fanzins/YYYY-MM-DD.md`:
    ```yaml
    ---
    title: "Fanzin Issue #NN"
@@ -277,7 +279,26 @@ The JavaScript in `base.njk` automatically initializes all `.pdf-viewer` element
    description: "Description"
    ---
    ```
-4. The homepage and fanzins page auto-update (newest first)
+5. The homepage and fanzins page auto-update (newest first)
+
+### Find a Fanzin's Date
+
+The issue number and date are printed on the cover, but the PDFs are
+image-only — `pdftotext` returns nothing, so the date cannot be extracted as
+text. Render the cover and read it:
+
+```bash
+gs -sDEVICE=jpeg -dFirstPage=1 -dLastPage=1 -r70 \
+   -dNOPAUSE -dQUIET -dBATCH \
+   -sOutputFile=cover.jpg "input.pdf"
+```
+
+Do not infer the date instead:
+- Issues are not published on a fixed weekday. Recent ones landed on a
+  Saturday, Monday, Sunday and Thursday, so "previous issue + 7 days" is wrong
+  often enough to produce bad filenames and a bad sort order.
+- Source filenames carry no date and often have `(1)`/`(2)` suffixes from
+  repeat downloads, so they cannot be trusted either.
 
 ### Optimize PDF for Web
 
