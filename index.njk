@@ -40,6 +40,34 @@ title: Home
     </section>
   </div>
 
+  {# Upcoming Panel Discussion — next scheduled stream, from the videos collection #}
+  {% set upcomingPanels = collections.videos | filterUpcoming(true) | reverse %}
+  {% if upcomingPanels.length > 0 %}
+  {% set nextPanel = upcomingPanels[0] %}
+  <section class="section">
+    <h2 class="section-title">
+      <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm-8 4H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
+      Upcoming Panel Discussion
+    </h2>
+    {% if nextPanel.data.youtubeId %}
+    <div class="video-embed">
+      <iframe
+        src="https://www.youtube.com/embed/{{ nextPanel.data.youtubeId }}"
+        title="{{ nextPanel.data.title }} - {{ nextPanel.date | dateFormat }}"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+    {% else %}
+    <div class="upcoming-panel">
+      <a href="https://www.youtube.com/@March19Platform" target="_blank" rel="noopener">
+        <img src="{{ nextPanel.data.poster }}" alt="{{ nextPanel.data.title }} - {{ nextPanel.date | dateFormat }}" class="panel-poster">
+      </a>
+    </div>
+    {% endif %}
+  </section>
+  {% endif %}
+
   {# 500th Day — 2-page spread #}
   <section class="section">
     <h2 class="section-title">
