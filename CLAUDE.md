@@ -306,7 +306,7 @@ Use Ghostscript to reduce PDF file size for faster web loading:
 
 ```bash
 gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen \
-   -dNOPAUSE -dQUIET -dBATCH \
+   -sColorConversionStrategy=RGB -dNOPAUSE -dQUIET -dBATCH \
    -sOutputFile=output.pdf input.pdf
 ```
 
@@ -318,12 +318,20 @@ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen \
 Example for a fanzin:
 ```bash
 gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen \
-   -dNOPAUSE -dQUIET -dBATCH \
+   -sColorConversionStrategy=RGB -dNOPAUSE -dQUIET -dBATCH \
    -sOutputFile=assets/fanzins/2026-01-23_issue_39_optimized.pdf \
    assets/fanzins/2026-01-23_issue_39.pdf
 ```
 
 After verifying the optimized PDF looks acceptable, replace the original with the optimized version.
+
+**Keep `-sColorConversionStrategy=RGB`.** Without it, Ghostscript 10.08 and
+later picks a device-independent colour strategy for `/screen` that it cannot
+apply to the fanzin's transparency groups. It prints
+`Cannot use DeviceIndependentColor for a Blending colour space` and writes
+every photo inside those groups as black. Treat that warning as a failure, not
+noise. The cover usually survives, so verify an inner page as well as page 1
+before replacing the original.
 
 ### Add a New Panel Discussion (Upcoming)
 
